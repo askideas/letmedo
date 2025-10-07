@@ -14,7 +14,16 @@ import {
   Award,
   TrendingUp,
   Globe,
-  Headphones
+  Headphones,
+  Hotel,
+  UtensilsCrossed,
+  Package,
+  UserCheck,
+  Car,
+  ShoppingCart,
+  GraduationCap,
+  Briefcase,
+  FileText
 } from 'lucide-react'
 import './Home.css'
 
@@ -27,12 +36,6 @@ const Home = () => {
       features: ['Student Information System', 'Online Attendance', 'Grade Management', 'Parent Portal']
     },
     {
-      icon: Calculator,
-      title: 'Payroll System',
-      description: 'Automated payroll processing with tax calculations, employee benefits, and comprehensive reporting.',
-      features: ['Automated Calculations', 'Tax Management', 'Employee Self-Service', 'Compliance Reports']
-    },
-    {
       icon: Heart,
       title: 'Hospital Management System',
       description: 'Streamlined healthcare operations with patient records, appointment scheduling, and billing integration.',
@@ -43,6 +46,84 @@ const Home = () => {
       title: 'Pharmacy Management System',
       description: 'Inventory management, prescription tracking, and automated billing for pharmaceutical operations.',
       features: ['Inventory Control', 'Prescription Management', 'Billing Automation', 'Supplier Management']
+    },
+    {
+      icon: Calculator,
+      title: 'Payroll Management System',
+      description: 'Automated payroll processing with tax calculations, employee benefits, and comprehensive reporting.',
+      features: ['Automated Calculations', 'Tax Management', 'Employee Self-Service', 'Compliance Reports']
+    },
+    {
+      icon: Hotel,
+      title: 'Hotel Management System',
+      description: 'Complete hospitality management with room booking, guest services, and revenue optimization.',
+      features: ['Room Reservations', 'Guest Check-in/out', 'Billing Management', 'Housekeeping Coordination']
+    },
+    {
+      icon: UtensilsCrossed,
+      title: 'Restaurant Management System',
+      description: 'Comprehensive food service operations including POS, inventory, and staff management.',
+      features: ['Point of Sale', 'Menu Management', 'Kitchen Display', 'Staff Scheduling']
+    },
+    {
+      icon: Package,
+      title: 'Inventory Management System',
+      description: 'Advanced stock control with real-time tracking, automated reordering, and warehouse management.',
+      features: ['Real-time Tracking', 'Automated Reordering', 'Warehouse Management', 'Supplier Integration']
+    },
+    {
+      icon: UserCheck,
+      title: 'CRM Software',
+      description: 'Customer relationship management with lead tracking, sales pipeline, and communication tools.',
+      features: ['Lead Management', 'Sales Pipeline', 'Customer Communications', 'Performance Analytics']
+    },
+    {
+      icon: ShoppingCart,
+      title: 'E-commerce Platform',
+      description: 'Complete online store solution with payment processing, inventory sync, and order management.',
+      features: ['Online Store Builder', 'Payment Gateway', 'Order Processing', 'Customer Management']
+    },
+    {
+      icon: GraduationCap,
+      title: 'Learning Management System',
+      description: 'Online education platform with course creation, student tracking, and assessment tools.',
+      features: ['Course Creation', 'Student Progress', 'Online Assessments', 'Certificate Management']
+    },
+    {
+      icon: Briefcase,
+      title: 'Project Management Tool',
+      description: 'Team collaboration platform with task assignment, progress tracking, and resource management.',
+      features: ['Task Management', 'Team Collaboration', 'Progress Tracking', 'Resource Planning']
+    },
+    {
+      icon: FileText,
+      title: 'Document Management System',
+      description: 'Digital document workflow with version control, approval processes, and secure storage.',
+      features: ['Version Control', 'Approval Workflow', 'Secure Storage', 'Search & Retrieval']
+    },
+    {
+      icon: Car,
+      title: 'Vehicle Management System',
+      description: 'Fleet management solution with GPS tracking, maintenance scheduling, and driver management.',
+      features: ['GPS Tracking', 'Maintenance Scheduling', 'Driver Management', 'Fuel Monitoring']
+    },
+    {
+      icon: TrendingUp,
+      title: 'Business Analytics Platform',
+      description: 'Data-driven insights with custom dashboards, reporting tools, and predictive analytics.',
+      features: ['Custom Dashboards', 'Advanced Reporting', 'Data Visualization', 'Predictive Analytics']
+    },
+    {
+      icon: Globe,
+      title: 'Website & Portal Development',
+      description: 'Custom web applications with responsive design, user portals, and content management.',
+      features: ['Responsive Design', 'User Portals', 'Content Management', 'SEO Optimization']
+    },
+    {
+      icon: Shield,
+      title: 'Security Management System',
+      description: 'Access control and monitoring solution with biometric integration and real-time alerts.',
+      features: ['Access Control', 'Biometric Integration', 'Real-time Monitoring', 'Security Alerts']
     }
   ]
 

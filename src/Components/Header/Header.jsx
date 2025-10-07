@@ -14,7 +14,15 @@ import {
   Hotel,
   UtensilsCrossed,
   Package,
-  UserCheck
+  UserCheck,
+  Car,
+  ShoppingCart,
+  GraduationCap,
+  Briefcase,
+  FileText,
+  TrendingUp,
+  Globe,
+  Shield
 } from 'lucide-react'
 import './Header.css'
 
@@ -32,6 +40,14 @@ const Header = () => {
     { name: 'Restaurant Management System', icon: UtensilsCrossed, path: '/services/restaurant', description: 'Food service operations' },
     { name: 'Inventory Management System', icon: Package, path: '/services/inventory', description: 'Stock & warehouse management' },
     { name: 'CRM Software', icon: UserCheck, path: '/services/crm', description: 'Customer relationship management' },
+    { name: 'E-commerce Platform', icon: ShoppingCart, path: '/services/ecommerce', description: 'Online store & marketplace solution' },
+    { name: 'Learning Management System', icon: GraduationCap, path: '/services/lms', description: 'Online education & training platform' },
+    { name: 'Project Management Tool', icon: Briefcase, path: '/services/project', description: 'Team collaboration & task management' },
+    { name: 'Document Management System', icon: FileText, path: '/services/document', description: 'Digital document workflow' },
+    { name: 'Vehicle Management System', icon: Car, path: '/services/vehicle', description: 'Fleet & transport management' },
+    { name: 'Business Analytics Platform', icon: TrendingUp, path: '/services/analytics', description: 'Data insights & reporting' },
+    { name: 'Website & Portal Development', icon: Globe, path: '/services/web', description: 'Custom web applications' },
+    { name: 'Security Management System', icon: Shield, path: '/services/security', description: 'Access control & monitoring' },
   ]
 
   return (
@@ -93,7 +109,7 @@ const Header = () => {
                   <div className="container">
                     <div className="row g-3">
                       {services.map((service, index) => (
-                        <div key={index} className="col-6 col-lg-3">
+                        <div key={index} className="col-6 col-md-4 col-lg-3 col-xl-2">
                           <Link 
                             className="service-card-link text-decoration-none"
                             to={service.path}
