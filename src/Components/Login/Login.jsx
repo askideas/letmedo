@@ -7,10 +7,7 @@ import {
   Lock, 
   ArrowRight, 
   Building2, 
-  CheckCircle,
-  Shield,
-  Users,
-  Zap
+  CheckCircle
 } from 'lucide-react'
 import { toast } from 'react-toastify'
 import './Login.css'
@@ -63,135 +60,72 @@ const Login = () => {
     }, 2000)
   }
 
-  const features = [
-    { icon: Shield, text: 'Enterprise-grade security' },
-    { icon: Users, text: '500+ satisfied customers' },
-    { icon: Zap, text: 'Lightning-fast performance' },
-    { icon: CheckCircle, text: '99.9% uptime guarantee' }
-  ]
-
   return (
     <div className="login-container">
-      <div className="login-background"></div>
-      
-      <div className="container-fluid h-100">
+      <div className="container-fluid vh-100">
         <div className="row h-100 g-0">
-          {/* Left Panel - Branding & Features */}
-          <div className="col-lg-7 d-none d-lg-block">
-            <div className="brand-panel glass-card" style={{ borderRadius: 0 }}>
+          
+          {/* Left Side - Branding (Desktop only) */}
+          <div className="col-lg-6 d-none d-lg-flex">
+            <div className="brand-section">
               <div className="brand-content">
-                {/* Logo and Navigation */}
-                <div className="brand-header">
-                  <Link to="/" className="brand-logo d-flex align-items-center text-decoration-none">
-                    <div className="logo-icon me-3">
-                      <Building2 size={28} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-white mb-0">LetMeDo</h4>
-                      <small className="text-white-50">Software Solutions</small>
-                    </div>
-                  </Link>
-                  
-                  <Link to="/" className="btn btn-outline-light btn-sm">
-                    ← Back to Home
-                  </Link>
-                </div>
-
-                {/* Main Content */}
-                <div className="brand-main">
-                  <div className="welcome-content">
-                    <h1 className="display-4 text-white mb-4 fw-bold">
-                      Welcome to the Future of 
-                      <span className="text-gradient d-block">Business Management</span>
-                    </h1>
-                    
-                    <p className="lead text-white-75 mb-5">
-                      Join thousands of organizations worldwide who trust our comprehensive 
-                      software solutions to streamline their operations and drive growth.
-                    </p>
-
-                    {/* Features List */}
-                    <div className="features-grid">
-                      {features.map((feature, index) => (
-                        <div key={index} className="feature-item d-flex align-items-center mb-3">
-                          <div className="feature-icon me-3">
-                            <feature.icon size={20} />
-                          </div>
-                          <span className="text-white">{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Testimonial */}
-                    <div className="testimonial mt-5 p-4">
-                      <div className="stars mb-2">
-                        ⭐⭐⭐⭐⭐
-                      </div>
-                      <p className="text-white-75 mb-3 fst-italic">
-                        "LetMeDo transformed how we manage our school operations. 
-                        The system is intuitive, reliable, and the support team is exceptional."
-                      </p>
-                      <div className="d-flex align-items-center">
-                        <div className="testimonial-avatar me-3"></div>
-                        <div>
-                          <div className="text-white fw-medium">Sarah Johnson</div>
-                          <small className="text-white-50">Principal, Oakwood Academy</small>
-                        </div>
-                      </div>
-                    </div>
+                <Link to="/" className="brand-logo">
+                  <Building2 size={32} />
+                  <div>
+                    <h3>LetMeDo</h3>
+                    <span>Software Solutions</span>
                   </div>
+                </Link>
+                
+                <div className="welcome-text">
+                  <h1>Welcome Back!</h1>
+                  <p>Access your management dashboard and continue streamlining your business operations.</p>
                 </div>
-
-                {/* Floating Elements */}
-                <div className="floating-elements">
-                  <div className="floating-card card-1">
-                    <Building2 size={16} className="text-primary" />
-                    <span>School System</span>
+                
+                <div className="features-list">
+                  <div className="feature">
+                    <CheckCircle size={20} />
+                    <span>Secure & Reliable</span>
                   </div>
-                  <div className="floating-card card-2">
-                    <Shield size={16} className="text-success" />
-                    <span>Secure Login</span>
+                  <div className="feature">
+                    <CheckCircle size={20} />
+                    <span>24/7 Support</span>
+                  </div>
+                  <div className="feature">
+                    <CheckCircle size={20} />
+                    <span>Cloud-Based</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Panel - Login Form */}
-          <div className="col-lg-5">
-            <div className="login-panel glass-card" style={{ borderRadius: 0 }}>
-              <div className="login-form-container">
-                {/* Mobile Header */}
-                <div className="mobile-header d-lg-none mb-4">
-                  <Link to="/" className="d-flex align-items-center text-decoration-none mb-3">
-                    <Building2 size={24} className="text-primary me-2" />
-                    <span className="fw-bold text-dark">LetMeDo</span>
-                  </Link>
-                  <Link to="/" className="btn btn-outline-primary btn-sm">
-                    ← Back to Home
-                  </Link>
+          {/* Right Side - Login Form */}
+          <div className="col-12 col-lg-6">
+            <div className="form-section">
+              {/* Mobile Header */}
+              <div className="mobile-brand d-lg-none">
+                <Link to="/" className="mobile-logo">
+                  <Building2 size={28} />
+                  <span>LetMeDo</span>
+                </Link>
+                <Link to="/" className="back-link">← Back to Home</Link>
+              </div>
+
+              <div className="login-form-wrapper">
+                <div className="form-header">
+                  <h2>Sign In</h2>
+                  <p>Enter your credentials to access your account</p>
                 </div>
 
-                {/* Form Header */}
-                <div className="form-header text-center mb-4">
-                  <h2 className="fw-bold mb-2">Welcome Back</h2>
-                  <p className="text-muted">Sign in to access your dashboard</p>
-                </div>
-
-                {/* Login Form */}
                 <form onSubmit={handleSubmit} className="login-form">
                   {/* Email Field */}
-                  <div className="form-group mb-3">
-                    <label htmlFor="email" className="form-label fw-medium">
-                      Email Address
-                    </label>
-                    <div className="input-group">
-                      <span className="input-group-text">
-                        <Mail size={18} className="text-muted" />
-                      </span>
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <div className="input-wrapper">
+                      <Mail size={18} className="input-icon" />
                       <input
                         type="email"
-                        className="form-control"
                         id="email"
                         name="email"
                         value={formData.email}
@@ -204,17 +138,12 @@ const Login = () => {
                   </div>
 
                   {/* Password Field */}
-                  <div className="form-group mb-3">
-                    <label htmlFor="password" className="form-label fw-medium">
-                      Password
-                    </label>
-                    <div className="input-group">
-                      <span className="input-group-text">
-                        <Lock size={18} className="text-muted" />
-                      </span>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <div className="input-wrapper">
+                      <Lock size={18} className="input-icon" />
                       <input
                         type={showPassword ? 'text' : 'password'}
-                        className="form-control"
                         id="password"
                         name="password"
                         value={formData.password}
@@ -225,7 +154,7 @@ const Login = () => {
                       />
                       <button
                         type="button"
-                        className="btn btn-outline-secondary"
+                        className="password-toggle"
                         onClick={() => setShowPassword(!showPassword)}
                         disabled={isLoading}
                       >
@@ -234,74 +163,44 @@ const Login = () => {
                     </div>
                   </div>
 
-                  {/* Remember Me & Forgot Password */}
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <div className="form-check">
+                  {/* Remember & Forgot */}
+                  <div className="form-options">
+                    <label className="checkbox-wrapper">
                       <input
-                        className="form-check-input"
                         type="checkbox"
-                        id="rememberMe"
                         name="rememberMe"
                         checked={formData.rememberMe}
                         onChange={handleInputChange}
                         disabled={isLoading}
                       />
-                      <label className="form-check-label text-muted" htmlFor="rememberMe">
-                        Remember me
-                      </label>
-                    </div>
-                    <a href="#" className="text-primary text-decoration-none">
-                      Forgot password?
-                    </a>
+                      <span>Remember me</span>
+                    </label>
+                    <a href="#" className="forgot-link">Forgot password?</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="btn btn-primary w-100 mb-4 py-2"
+                    className="submit-btn"
                     disabled={isLoading}
                   >
                     {isLoading ? (
                       <>
-                        <span className="spinner-border spinner-border-sm me-2"></span>
-                        Signing In...
+                        <span className="spinner"></span>
+                        Signing in...
                       </>
                     ) : (
                       <>
                         Sign In
-                        <ArrowRight size={18} className="ms-2" />
+                        <ArrowRight size={18} />
                       </>
                     )}
                   </button>
 
-                  {/* Divider */}
-                  <div className="divider mb-4">
-                    <span>or</span>
-                  </div>
-
-                  {/* Social Login Options */}
-                  <div className="social-login mb-4">
-                    <button type="button" className="btn btn-outline-secondary w-100 mb-2">
-                      <img src="/api/placeholder/20/20" alt="Google" className="me-2" />
-                      Continue with Google
-                    </button>
-                    <button type="button" className="btn btn-outline-secondary w-100">
-                      <img src="/api/placeholder/20/20" alt="Microsoft" className="me-2" />
-                      Continue with Microsoft
-                    </button>
-                  </div>
-
                   {/* Sign Up Link */}
-                  <div className="text-center">
-                    <p className="text-muted mb-0">
-                      Don't have an account?{' '}
-                      <a href="#" className="text-primary text-decoration-none fw-medium">
-                        Request Access
-                      </a>
-                    </p>
-                    <small className="text-muted">
-                      Contact our sales team for enterprise accounts
-                    </small>
+                  <div className="signup-link">
+                    Don't have an account? 
+                    <a href="#"> Request Access</a>
                   </div>
                 </form>
               </div>

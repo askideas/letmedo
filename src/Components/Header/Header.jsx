@@ -47,7 +47,6 @@ const Header = () => {
     { name: 'Vehicle Management System', icon: Car, path: '/services/vehicle', description: 'Fleet & transport management' },
     { name: 'Business Analytics Platform', icon: TrendingUp, path: '/services/analytics', description: 'Data insights & reporting' },
     { name: 'Website & Portal Development', icon: Globe, path: '/services/web', description: 'Custom web applications' },
-    { name: 'Security Management System', icon: Shield, path: '/services/security', description: 'Access control & monitoring' },
   ]
 
   return (
@@ -109,18 +108,21 @@ const Header = () => {
                   <div className="container">
                     <div className="row g-3">
                       {services.map((service, index) => (
-                        <div key={index} className="col-6 col-md-4 col-lg-3 col-xl-2">
+                        <div key={index} className="col-6 col-md-4 col-lg-3 col-xl-4">
                           <Link 
                             className="service-card-link text-decoration-none"
                             to={service.path}
                             onClick={() => setIsServicesOpen(false)}
                           >
-                            <div className="service-card-item p-3 h-100 text-center">
+                            <div className="service-card-item p-3 text-center d-flex" style={{height: 'fit-content'}}>
                               <div className="service-icon-wrapper mb-2">
                                 <service.icon size={24} className="text-primary" />
                               </div>
-                              <div className="fw-medium mb-1 text-dark">{service.name}</div>
-                              <small className="text-muted">{service.description}</small>
+                              <div style={{height: 'fit-content'}}>
+                                <div className="fw-medium mb-1 text-dark text-left" style={{fontSize: '14px'}}>{service.name}</div>
+                                <small className="text-muted text-left" style={{fontSize: '12px'}}>{service.description}</small>
+                              </div>
+                              
                             </div>
                           </Link>
                         </div>
