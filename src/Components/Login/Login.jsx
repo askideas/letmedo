@@ -8,7 +8,8 @@ import {
   Github,
   User,
   Phone,
-  Mail
+  Mail,
+  LockKeyhole
 } from 'lucide-react'
 import { toast } from 'react-toastify'
 import './Login.css'
@@ -205,7 +206,7 @@ const Login = () => {
                 <form onSubmit={handleLoginSubmit} className="login-form">
                   {/* Email Field */}
                   <div className="form-group">
-                    <div className="input-wrapper">
+                    <div className="input-wrapper has-icon">
                       <Mail size={18} className="input-icon" />
                       <input
                         type="email"
@@ -221,7 +222,8 @@ const Login = () => {
 
                   {/* Password Field */}
                   <div className="form-group">
-                    <div className="input-wrapper">
+                    <div className="input-wrapper has-icon">
+                      <LockKeyhole size={18} className="input-icon" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -230,7 +232,6 @@ const Login = () => {
                         placeholder="••••••"
                         required
                         disabled={isLoading}
-                        style={{ paddingLeft: '1rem' }}
                       />
                       <button
                         type="button"
@@ -268,12 +269,12 @@ const Login = () => {
                   </button>
 
                   {/* Divider */}
-                  <div className="divider">
+                  {/* <div className="divider">
                     <span>OR</span>
-                  </div>
+                  </div> */}
 
                   {/* Social Login Buttons */}
-                  <div className="social-login">
+                  {/* <div className="social-login">
                     <button type="button" className="social-btn facebook">
                       <Facebook size={20} />
                     </button>
@@ -283,7 +284,7 @@ const Login = () => {
                     <button type="button" className="social-btn github">
                       <Github size={20} />
                     </button>
-                  </div>
+                  </div> */}
 
                   {/* Sign Up Link */}
                   <div className="signup-link">
@@ -352,7 +353,8 @@ const Login = () => {
 
                   {/* Password Field */}
                   <div className="form-group">
-                    <div className="input-wrapper">
+                    <div className="input-wrapper has-icon">
+                      <LockKeyhole size={18} className="input-icon" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -375,7 +377,8 @@ const Login = () => {
 
                   {/* Confirm Password Field */}
                   <div className="form-group">
-                    <div className="input-wrapper">
+                    <div className="input-wrapper has-icon">
+                      <LockKeyhole size={18} className="input-icon" />
                       <input
                         type={showConfirmPassword ? 'text' : 'password'}
                         name="confirmPassword"
