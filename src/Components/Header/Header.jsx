@@ -211,6 +211,26 @@ const Header = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu d-lg-none ${isMenuOpen ? 'show' : ''}`}>
         <div className="mobile-menu-content">
+          {/* Mobile Menu Header with Close Button */}
+          <div className="mobile-menu-header">
+            <div className="mobile-logo">
+              <Building2 size={28} className="text-primary" />
+              <div>
+                <span className="fw-bold text-primary fs-5">LetMeDo</span>
+                <small className="d-block text-muted" style={{ fontSize: '0.7rem', lineHeight: '1' }}>
+                  Software Solutions
+                </small>
+              </div>
+            </div>
+            <button 
+              className="mobile-close-btn"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
           <div className="mobile-nav-items">
             <Link 
               className={`mobile-nav-item ${location.pathname === '/' ? 'active' : ''}`}
