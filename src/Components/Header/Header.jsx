@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { 
   Menu, 
   X, 
   ChevronDown, 
+  ChevronUp,
   Building2, 
   Users, 
   Calculator, 
@@ -31,6 +32,25 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const location = useLocation()
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false)
+    setIsServicesOpen(false)
+  }, [location.pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('mobile-menu-open')
+    } else {
+      document.body.classList.remove('mobile-menu-open')
+    }
+    
+    return () => {
+      document.body.classList.remove('mobile-menu-open')
+    }
+  }, [isMenuOpen])
+
   const services = [
     { name: 'School Management System', icon: Building2, path: '/services/school', description: 'Complete educational management' },
     { name: 'Hospital Management System', icon: Heart, path: '/services/hospital', description: 'Healthcare operations management' },
@@ -49,12 +69,23 @@ const Header = () => {
     { name: 'Website & Portal Development', icon: Globe, path: '/services/web', description: 'Custom web applications' },
   ]
 
+  const toggleMobileMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+    if (isServicesOpen) {
+      setIsServicesOpen(false)
+    }
+  }
+
+  const toggleMobileServices = () => {
+    setIsServicesOpen(!isServicesOpen)
+  }
+
   return (
     <header className="navbar-custom">
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div className="container">
           {/* Brand Logo */}
-          <Link className="navbar-brand d-flex align-items-center" to="/">
+          <Link className="navbar-brand d-flex align-items-center" to="/" onClick={() => setIsMenuOpen(false)}>
             <div className="logo-container me-2">
               <Building2 size={32} className="text-primary" />
             </div>
@@ -68,15 +99,16 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="navbar-toggler border-0" 
+            className="navbar-toggler border-0 p-2" 
             type="button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle navigation"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Navigation Menu */}
-          <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
+          {/* Desktop Navigation */}
+          <div className="collapse navbar-collapse d-none d-lg-flex">
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
                 <Link 
@@ -87,7 +119,7 @@ const Header = () => {
                 </Link>
               </li>
               
-              {/* Services Dropdown */}
+              {/* Desktop Services Dropdown */}
               <li 
                 className="nav-item dropdown"
                 onMouseEnter={() => setIsServicesOpen(true)}
@@ -96,10 +128,7 @@ const Header = () => {
                 <a 
                   className="nav-link fw-medium d-flex align-items-center" 
                   href="#"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    setIsServicesOpen(!isServicesOpen)
-                  }}
+                  onClick={(e) => e.preventDefault()}
                 >
                   Services
                   <ChevronDown size={16} className="ms-1" />
@@ -114,15 +143,14 @@ const Header = () => {
                             to={service.path}
                             onClick={() => setIsServicesOpen(false)}
                           >
-                            <div className="service-card-item p-3 text-center d-flex" style={{height: 'fit-content'}}>
-                              <div className="service-icon-wrapper mb-2">
+                            <div className="service-card-item p-3 d-flex">
+                              <div className="service-icon-wrapper me-3 flex-shrink-0">
                                 <service.icon size={24} className="text-primary" />
                               </div>
-                              <div style={{height: 'fit-content'}}>
-                                <div className="fw-medium mb-1 text-dark px-2" style={{fontSize: '13px', textAlign: 'start'}}>{service.name}</div>
-                                <small className="text-muted d-flex px-2" style={{fontSize: '11px', textAlign: 'start'}}>{service.description}</small>
+                              <div>
+                                <div className="fw-medium mb-1 text-dark" style={{fontSize: '13px'}}>{service.name}</div>
+                                <small className="text-muted" style={{fontSize: '11px'}}>{service.description}</small>
                               </div>
-                              
                             </div>
                           </Link>
                         </div>
@@ -155,7 +183,7 @@ const Header = () => {
               </li>
             </ul>
 
-            {/* Right Side Actions */}
+            {/* Desktop Right Side Actions */}
             <div className="d-flex align-items-center gap-3">
               <div className="d-none d-lg-flex align-items-center text-muted me-3">
                 <Phone size={16} className="me-2" />
@@ -180,10 +208,115 @@ const Header = () => {
         </div>
       </nav>
       
+      {/* Mobile Menu */}
+      <div className={`mobile-menu d-lg-none ${isMenuOpen ? 'show' : ''}`}>
+        <div className="mobile-menu-content">
+          <div className="mobile-nav-items">
+            <Link 
+              className={`mobile-nav-item ${location.pathname === '/' ? 'active' : ''}`}
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            
+            {/* Mobile Services Dropdown */}
+            <div className="mobile-services-section">
+              <button 
+                className={`mobile-nav-item services-toggle ${isServicesOpen ? 'active' : ''}`}
+                onClick={toggleMobileServices}
+              >
+                <span>Services</span>
+                {isServicesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
+              
+              <div className={`mobile-services-dropdown ${isServicesOpen ? 'show' : ''}`}>
+                {services.map((service, index) => (
+                  <Link
+                    key={index}
+                    to={service.path}
+                    className="mobile-service-item"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setIsServicesOpen(false)
+                    }}
+                  >
+                    <div className="service-icon-mobile">
+                      <service.icon size={20} className="text-primary" />
+                    </div>
+                    <div className="service-content-mobile">
+                      <div className="service-name">{service.name}</div>
+                      <div className="service-desc">{service.description}</div>
+                    </div>
+                  </Link>
+                ))}
+                
+                {/* Mobile CTA */}
+                <div className="mobile-services-cta">
+                  <p className="cta-text">Need a custom solution?</p>
+                  <Link 
+                    to="/contact" 
+                    className="btn btn-primary btn-sm w-100"
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setIsServicesOpen(false)
+                    }}
+                  >
+                    Contact Our Team
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <Link 
+              className="mobile-nav-item"
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            
+            <Link 
+              className="mobile-nav-item"
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
+
+          {/* Mobile Actions */}
+          <div className="mobile-actions">
+            {/* <div className="mobile-contact-info">
+              <Phone size={16} className="me-2 text-primary" />
+              <span>+1 (555) 123-4567</span>
+            </div> */}
+            
+            <div className="mobile-buttons">
+              <Link 
+                to="/login" 
+                className="btn btn-outline-primary w-100 mb-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Login
+              </Link>
+              
+              <Link 
+                to="/demo" 
+                className="btn btn-primary w-100"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Request Demo
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div 
-          className="mobile-overlay d-lg-none"
+          className="mobile-overlay"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
