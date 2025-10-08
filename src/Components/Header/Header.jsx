@@ -119,8 +119,8 @@ const Header = () => {
                                 <service.icon size={24} className="text-primary" />
                               </div>
                               <div style={{height: 'fit-content'}}>
-                                <div className="fw-medium mb-1 text-dark text-left" style={{fontSize: '14px'}}>{service.name}</div>
-                                <small className="text-muted text-left" style={{fontSize: '12px'}}>{service.description}</small>
+                                <div className="fw-medium mb-1 text-dark px-2" style={{fontSize: '13px', textAlign: 'start'}}>{service.name}</div>
+                                <small className="text-muted d-flex px-2" style={{fontSize: '11px', textAlign: 'start'}}>{service.description}</small>
                               </div>
                               
                             </div>

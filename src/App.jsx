@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import './App.css'
@@ -10,6 +10,17 @@ import Login from './Components/Login/Login'
 import NotFound from './Components/NotFound/NotFound'
 import Footer from './Components/Footer/Footer'
 
+// Component to handle scroll to top on route change
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+};
+
 const AppContent = () => {
   const location = useLocation();
   
@@ -18,6 +29,7 @@ const AppContent = () => {
 
   return (
     <>
+      <ScrollToTop />
       {!hideHeaderFooter && <Header />}
       <main className={hideHeaderFooter ? '' : 'flex-grow-1'}>
         <Routes>

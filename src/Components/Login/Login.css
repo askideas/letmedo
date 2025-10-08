@@ -5,6 +5,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.login-main {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  margin: 2rem;
+  display: flex;
+  min-height: 600px;
+}
+
+/* Back Button */
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #64748b;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: white;
+  color: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(79, 70, 229, 0.15);
+}
+
+.login-container {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-main {
@@ -390,6 +440,13 @@
   .form-section {
     padding: 2rem;
   }
+  
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -427,6 +484,17 @@
   
   .password-toggle {
     right: 0.75rem;
+  }
+  
+  .back-button {
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .back-button span {
+    display: none;
   }
 }
 

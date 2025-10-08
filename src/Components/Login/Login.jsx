@@ -9,7 +9,8 @@ import {
   User,
   Phone,
   Mail,
-  LockKeyhole
+  LockKeyhole,
+  ArrowLeft
 } from 'lucide-react'
 import { toast } from 'react-toastify'
 import './Login.css'
@@ -158,6 +159,12 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      {/* Back Button */}
+      <Link to="/" className="back-button">
+        <ArrowLeft size={20} />
+        Back to Home
+      </Link>
+
       <div className="login-main">
         {/* Left Side - Illustration */}
         <div className="illustration-section">
