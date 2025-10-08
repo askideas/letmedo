@@ -41,15 +41,44 @@ const Header = () => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.classList.add('mobile-menu-open')
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      document.body.classList.add('mobile-menu-open');
+      // Prevent scroll restoration on iOS
+      document.body.style.top = `-${scrollY}px`;
     } else {
-      document.body.classList.remove('mobile-menu-open')
+      document.body.classList.remove('mobile-menu-open');
+      // Restore scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
     
     return () => {
-      document.body.classList.remove('mobile-menu-open')
+      document.body.classList.remove('mobile-menu-open');
+      document.body.style.top = '';
     }
   }, [isMenuOpen])
+
+  // Handle viewport changes (for mobile browsers with dynamic UI)
+  useEffect(() => {
+    const handleResize = () => {
+      // Update CSS custom property for viewport height
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, [])
 
   const services = [
     { name: 'School Management System', icon: Building2, path: '/services/school', description: 'Complete educational management' },
