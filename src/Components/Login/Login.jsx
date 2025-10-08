@@ -61,12 +61,45 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-main">
-        {/* Left Side - Login Form */}
+        {/* Left Side - Illustration */}
+        <div className="illustration-section">
+          <div className="illustration-content">
+            <div className="illustration-figure">
+              <div className="character">👨‍💻</div>
+              
+              {/* Chart 1 */}
+              <div className="charts chart-1">
+                <div className="chart-title">Secure</div>
+                <div className="chart-bars">
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                </div>
+              </div>
+              
+              {/* Chart 2 */}
+              <div className="charts chart-2">
+                <div className="chart-title">Fast</div>
+                <div className="chart-bars">
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side - Login Form */}
         <div className="form-section">
           <div className="login-form-wrapper">
             <div className="form-header">
               <h2>Login</h2>
-              <p>Login to your account<br />Thank you for get back Neiel web applications, let's access our the best recommendation for you.</p>
+              <p>Login to your account<br />Thank you for get back LetMeDo web applications, let's access our the best recommendation for you.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="login-form">
@@ -160,38 +193,6 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Side - Illustration */}
-        <div className="illustration-section">
-          <div className="illustration-content">
-            <div className="illustration-figure">
-              <div className="character">👨‍💻</div>
-              
-              {/* Chart 1 */}
-              <div className="charts chart-1">
-                <div className="chart-title">$682.5</div>
-                <div className="chart-bars">
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                </div>
-              </div>
-              
-              {/* Chart 2 */}
-              <div className="charts chart-2">
-                <div className="chart-title">$682.5</div>
-                <div className="chart-bars">
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                  <div className="bar"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )
