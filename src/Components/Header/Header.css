@@ -25,6 +25,11 @@
   box-shadow: 0 2px 8px rgba(13, 110, 253, 0.2);
 }
 
+.letmedo-logo {
+  width: 251px;
+  height: 62px;
+}
+
 .logo-container .lucide {
   color: white !important;
 }

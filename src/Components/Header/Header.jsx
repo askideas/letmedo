@@ -26,6 +26,7 @@ import {
   Shield
 } from 'lucide-react'
 import './Header.css'
+import Logo from '../../assets/logo.jpg'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -115,7 +116,7 @@ const Header = () => {
         <div className="container">
           {/* Brand Logo */}
           <Link className="navbar-brand d-flex align-items-center" to="/" onClick={() => setIsMenuOpen(false)}>
-            <div className="logo-container me-2">
+            {/* <div className="logo-container me-2">
               <Building2 size={32} className="text-primary" />
             </div>
             <div>
@@ -123,7 +124,8 @@ const Header = () => {
               <small className="d-block text-muted" style={{ fontSize: '0.7rem', lineHeight: '1' }}>
                 Software Solutions
               </small>
-            </div>
+            </div> */}
+            <img src={Logo} alt="" className='letmedo-logo' />
           </Link>
 
           {/* Mobile Menu Button */}
